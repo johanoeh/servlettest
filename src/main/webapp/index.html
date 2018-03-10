@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script> 
+          $(document).ready(function(){
+               $("button").click(function(){
+                 $.get("http://localhost:8080/RestTest/SubjectServlet?type=json",function(data,status){
+                     if(status === "success"){
+                       jsonObject = JSON.parse(data);
+                      // alert(jsonObject[1]["subjectName"]);
+                      var subjectList = $("#subjectList");
+                       jsonObject.forEach( function(element){
+                           //alert(element["subjectName"]);
+                           subjectList.append("<li>"+element["subjectName"]+"</li>");
+                       });
+                     }
+            });   
+           });
+          });
+          
+          $.prototype = {};
+          
+        </script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <button >click me</button>
+        <ul id="subjectList">
+            
+        </ul>
+    </body>
+</html>
